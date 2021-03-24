@@ -1,0 +1,5 @@
+console.log('"Joel Irineu"')
+console.log("'joel irineu'")
+console.log(`"Joel" 'Irineu'`)
+// Tudo dentro de aspas é uma string(texto)
+console.log(35, 15.85, 'joel irineu')

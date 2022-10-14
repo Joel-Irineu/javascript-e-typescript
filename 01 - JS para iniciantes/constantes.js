@@ -1,5 +1,4 @@
-/**
- * REGRAS
+/** REGRAS
  * Não pode palavra rezervada
  * Precisa ter nome significativo
  * Não pode começar com números

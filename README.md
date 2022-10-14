@@ -1,1 +1,1 @@
-"# javascript-e-typescript" 
+# javascript & typescript 

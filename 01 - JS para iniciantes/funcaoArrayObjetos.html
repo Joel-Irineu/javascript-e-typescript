@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicios</title>
+    <style>
+        body{
+            background: #dbd9d9;
+        }
+        form, .list{
+            margin:  20px auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 300px;
+            background: #fff;
+            padding: 20px;
+            border-radius: 3px;
+            -webkit-box-shadow: 2px 6px 5px -1px rgba(0,0,0,0.42);
+            -moz-box-shadow: 2px 6px 5px -1px rgba(0,0,0,0.42);
+            box-shadow: 2px 6px 5px -1px rgba(0,0,0,0.42);
+        }
+        input{
+            margin-bottom: 10px;
+            padding: 5px;
+        }
+        button{
+            cursor: pointer;
+            padding: 5px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <form id="form">
+        <input type="text" name="name" id="name" placeholder="Nome">
+        <input type="text" name="lastName" id="lastName" placeholder="Sobrenome">
+        <input type="text" name="weight" id="weight" placeholder="Peso">
+        <input type="text" name="height" id="height" placeholder="Altura">
+        <button onclick="addList()">Adicionar pessoa</button>
+    </form>
+    <div class="list">
+        <h3>Pessoas:</h3>
+        <div id="list">
+
+        </div>
+    </div>
+    
+    <script>
+        // Faz com que o formulario não envie
+        document.querySelector("#form").addEventListener('submit', e => e.preventDefault());
+
+        // cria o array de pessoas
+        let people = [];
+
+        // Função que cria o objeto pessoa
+        function createPerson(name, lastName, weight, height){
+            return {
+                name: name,
+                lastName: lastName,
+                weight: weight,
+                height: height
+            }
+        }
+
+        // Lista na tela a lista de pessoas
+        function showList(){
+            let list = '<ul>';
+            people.forEach(person => {
+                list += `<li> ${person.name} ${person.lastName}, ${person.weight}kg, ${person.height}m</li>`;
+            });
+            list += '</ul>';
+
+            document.querySelector('#list').innerHTML = list;
+        }
+
+        // Adiciona novas pessoas na lista
+        function addList(){
+            // Pega os dados da pessoa
+            let name = document.querySelector('#name');
+            let lastName = document.querySelector('#lastName');
+            let weight = document.querySelector('#weight');
+            let height = document.querySelector('#height');
+            // Verifica se todos os dados estão preenchidos
+            if(name.value != '', lastName.value != '', weight.value != '', height.value != ''){
+                // Cria uma nova pessoa
+                people.push(createPerson(name.value, lastName.value, weight.value, height.value));
+                // chama a função showList
+                showList();
+                // Reseta os inputs
+                name.value = '';
+                lastName.value = '';
+                weight.value = '';
+                height.value = '';
+            }else{
+                alert('por favor, preencha todos os dados');
+            }
+
+        }
+    </script>
+</body>
+</html>

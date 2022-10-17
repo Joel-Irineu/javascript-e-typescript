@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicios</title>
+</head>
+<body>
+    <section>
+        <h1>O seu número é: <span class="num">0</span></h1>
+        <div id="texto">
+            <p>Raiz Quadrada: <span id="raiz"></span></p>
+            <p><span class="num"></span> <span id="isInt"></span></p>
+            <p><span class="num"></span> <span id="isNaN"></span></p>
+            <p>Arredondando para baixo: <span id="down"></span></p>
+            <p>Arredondando para cima: <span id="up"></span></p>
+            <p>Com duas casas deciamais: <span id="real"></span></p>
+        </div>
+    </section>
+
+    <script>
+        const numero = Number(prompt('Digite um número'));
+        const num = document.querySelectorAll('.num');
+        const raiz = document.querySelector('#raiz');
+        const numIsInt = document.querySelector('#isInt');
+        const numIsNaN = document.querySelector('#isNaN');
+        const down = document.querySelector('#down');
+        const up = document.querySelector('#up');
+        const real = document.querySelector('#real');
+        
+        num.forEach(element => {
+            element.innerHTML = numero
+        });
+
+        raiz.innerHTML = numero ** 0.5;
+        numIsInt.innerHTML = Number.isInteger(numero) ? 'É Inteiro' : 'Não é Inteiro';
+        numIsNaN.innerHTML = Number.isNaN(numero) ? 'É NaN' : 'Não é NaN';
+        down.innerHTML = Math.ceil(numero);
+        up.innerHTML = Math.floor(numero);
+        real.innerHTML = numero.toFixed(2);
+    </script>
+</body>
+</html>
